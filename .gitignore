@@ -1,0 +1,26 @@
+# Base de données SQLite (données de production)
+data/site.db
+
+# Images uploadées via l'admin
+public/uploads/oeuvres/*
+public/uploads/expos/*
+public/uploads/boutique/*
+public/uploads/portrait.jpg
+
+# Garder la structure des dossiers uploads
+!public/uploads/oeuvres/.gitkeep
+!public/uploads/expos/.gitkeep
+!public/uploads/boutique/.gitkeep
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Claude
+.claude/
