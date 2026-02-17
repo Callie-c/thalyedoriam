@@ -267,21 +267,18 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     cursor: pointer;
     background: var(--color-gallery-bg);
     border-radius: 4px;
-    border: 1px solid var(--color-frame);
+    border: none;
     box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    transition: box-shadow var(--transition), border-color var(--transition);
+    transition: box-shadow var(--transition);
 }
 .gallery-item:hover {
     box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-    border-color: var(--color-accent);
 }
 .gallery-item img {
     width: 100%;
     aspect-ratio: 3/4;
-    object-fit: contain;
+    object-fit: cover;
     transition: transform 0.5s ease;
-    background: var(--color-gallery-bg);
-    padding: 8px;
 }
 .gallery-item:hover img {
     transform: scale(1.03);
