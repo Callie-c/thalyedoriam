@@ -278,6 +278,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     width: 100%;
     aspect-ratio: 3/4;
     object-fit: cover;
+    object-position: center center;
     transition: transform 0.5s ease;
 }
 .gallery-item:hover img {
