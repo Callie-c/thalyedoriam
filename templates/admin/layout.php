@@ -14,25 +14,25 @@
 </head>
 <body class="admin-body">
     <header class="admin-header">
-        <a href="/admin" class="site-logo"><?= e(getSetting('site_title', "Thalye d'Oriam")) ?></a>
+        <a href="/artistspace" class="site-logo"><?= e(getSetting('site_title', "Thalye d'Oriam")) ?></a>
         <nav class="admin-nav">
             <?php
             $adminUri = $_SERVER['REQUEST_URI'];
             $adminLinks = [
-                '/admin' => 'Tableau de bord',
-                '/admin/oeuvres' => 'Œuvres',
-                '/admin/expositions' => 'Expositions',
-                '/admin/boutique' => 'Boutique',
-                '/admin/pages' => 'Pages',
-                '/admin/settings' => 'Réglages',
+                '/artistspace' => 'Tableau de bord',
+                '/artistspace/oeuvres' => 'Œuvres',
+                '/artistspace/expositions' => 'Expositions',
+                '/artistspace/boutique' => 'Boutique',
+                '/artistspace/pages' => 'Pages',
+                '/artistspace/settings' => 'Réglages',
             ];
             foreach ($adminLinks as $url => $label):
-                $isActive = ($url === '/admin' && $adminUri === '/admin') || ($url !== '/admin' && str_starts_with($adminUri, $url));
+                $isActive = ($url === '/artistspace' && $adminUri === '/artistspace') || ($url !== '/artistspace' && str_starts_with($adminUri, $url));
             ?>
                 <a href="<?= $url ?>" class="<?= $isActive ? 'active' : '' ?>"><?= $label ?></a>
             <?php endforeach; ?>
         </nav>
-        <a href="/admin/logout" class="admin-logout">Déconnexion</a>
+        <a href="/artistspace/logout" class="admin-logout">Déconnexion</a>
     </header>
 
     <div class="admin-main">

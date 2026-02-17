@@ -13,7 +13,7 @@ if ($action === 'delete' && $id) {
         $db->prepare('DELETE FROM boutique WHERE id = :id')->execute(['id' => $id]);
         flashMessage('success', 'Article supprimé.');
     }
-    header('Location: ' . SITE_URL . '/admin/boutique');
+    header('Location: ' . SITE_URL . '/artistspace/boutique');
     exit;
 }
 
@@ -26,7 +26,7 @@ if ($action === 'edit' || $action === 'new') {
         $article = $stmt->fetch();
         if (!$article) {
             flashMessage('error', 'Article introuvable.');
-            header('Location: ' . SITE_URL . '/admin/boutique');
+            header('Location: ' . SITE_URL . '/artistspace/boutique');
             exit;
         }
     }
@@ -73,7 +73,7 @@ if ($action === 'edit' || $action === 'new') {
                     ]);
                     flashMessage('success', 'Article ajouté.');
                 }
-                header('Location: ' . SITE_URL . '/admin/boutique');
+                header('Location: ' . SITE_URL . '/artistspace/boutique');
                 exit;
             }
         }
@@ -134,12 +134,12 @@ if ($action === 'edit' || $action === 'new') {
         </div>
         <div class="form-actions">
             <button type="submit" class="btn btn-primary"><?= $article ? 'Enregistrer' : 'Ajouter' ?></button>
-            <a href="/admin/boutique" class="btn">Annuler</a>
+            <a href="/artistspace/boutique" class="btn">Annuler</a>
         </div>
     </form>
     <?php
     $adminContent = ob_get_clean();
-    include TEMPLATE_DIR . '/admin/layout.php';
+    include TEMPLATE_DIR . '/artistspace/layout.php';
     return;
 }
 
@@ -151,7 +151,7 @@ ob_start();
 
 <div class="admin-actions">
     <h1 class="admin-title" style="margin-bottom:0">Boutique</h1>
-    <a href="/admin/boutique/new" class="btn btn-primary btn-sm">+ Ajouter</a>
+    <a href="/artistspace/boutique/new" class="btn btn-primary btn-sm">+ Ajouter</a>
 </div>
 
 <?php if (empty($articles)): ?>
@@ -177,8 +177,8 @@ ob_start();
                     <td><?= $a['disponible'] ? '✓' : 'Vendu' ?></td>
                     <td><?= $a['visible'] ? '✓' : '✗' ?></td>
                     <td class="actions">
-                        <a href="/admin/boutique/<?= $a['id'] ?>/edit" class="btn btn-sm">Modifier</a>
-                        <form method="POST" action="/admin/boutique/<?= $a['id'] ?>/delete" style="display:inline" onsubmit="return confirm('Supprimer cet article ?')">
+                        <a href="/artistspace/boutique/<?= $a['id'] ?>/edit" class="btn btn-sm">Modifier</a>
+                        <form method="POST" action="/artistspace/boutique/<?= $a['id'] ?>/delete" style="display:inline" onsubmit="return confirm('Supprimer cet article ?')">
                             <?= csrfField() ?>
                             <button type="submit" class="btn btn-sm btn-danger">Supprimer</button>
                         </form>
@@ -191,4 +191,4 @@ ob_start();
 
 <?php
 $adminContent = ob_get_clean();
-include TEMPLATE_DIR . '/admin/layout.php';
+include TEMPLATE_DIR . '/artistspace/layout.php';

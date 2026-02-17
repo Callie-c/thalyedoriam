@@ -13,7 +13,7 @@ if ($action === 'delete' && $id) {
         $db->prepare('DELETE FROM expositions WHERE id = :id')->execute(['id' => $id]);
         flashMessage('success', 'Exposition supprimée.');
     }
-    header('Location: ' . SITE_URL . '/admin/expositions');
+    header('Location: ' . SITE_URL . '/artistspace/expositions');
     exit;
 }
 
@@ -26,7 +26,7 @@ if ($action === 'edit' || $action === 'new') {
         $expo = $stmt->fetch();
         if (!$expo) {
             flashMessage('error', 'Exposition introuvable.');
-            header('Location: ' . SITE_URL . '/admin/expositions');
+            header('Location: ' . SITE_URL . '/artistspace/expositions');
             exit;
         }
     }
@@ -73,7 +73,7 @@ if ($action === 'edit' || $action === 'new') {
                     ]);
                     flashMessage('success', 'Exposition ajoutée.');
                 }
-                header('Location: ' . SITE_URL . '/admin/expositions');
+                header('Location: ' . SITE_URL . '/artistspace/expositions');
                 exit;
             }
         }
@@ -129,12 +129,12 @@ if ($action === 'edit' || $action === 'new') {
         </div>
         <div class="form-actions">
             <button type="submit" class="btn btn-primary"><?= $expo ? 'Enregistrer' : 'Ajouter' ?></button>
-            <a href="/admin/expositions" class="btn">Annuler</a>
+            <a href="/artistspace/expositions" class="btn">Annuler</a>
         </div>
     </form>
     <?php
     $adminContent = ob_get_clean();
-    include TEMPLATE_DIR . '/admin/layout.php';
+    include TEMPLATE_DIR . '/artistspace/layout.php';
     return;
 }
 
@@ -146,7 +146,7 @@ ob_start();
 
 <div class="admin-actions">
     <h1 class="admin-title" style="margin-bottom:0">Expositions</h1>
-    <a href="/admin/expositions/new" class="btn btn-primary btn-sm">+ Ajouter</a>
+    <a href="/artistspace/expositions/new" class="btn btn-primary btn-sm">+ Ajouter</a>
 </div>
 
 <?php if (empty($expos)): ?>
@@ -174,8 +174,8 @@ ob_start();
                     <td><?= formatDate($expo['date_debut']) ?></td>
                     <td><span class="expo-badge <?= $status ?>"><?= expoStatusLabel($status) ?></span></td>
                     <td class="actions">
-                        <a href="/admin/expositions/<?= $expo['id'] ?>/edit" class="btn btn-sm">Modifier</a>
-                        <form method="POST" action="/admin/expositions/<?= $expo['id'] ?>/delete" style="display:inline" onsubmit="return confirm('Supprimer cette exposition ?')">
+                        <a href="/artistspace/expositions/<?= $expo['id'] ?>/edit" class="btn btn-sm">Modifier</a>
+                        <form method="POST" action="/artistspace/expositions/<?= $expo['id'] ?>/delete" style="display:inline" onsubmit="return confirm('Supprimer cette exposition ?')">
                             <?= csrfField() ?>
                             <button type="submit" class="btn btn-sm btn-danger">Supprimer</button>
                         </form>
@@ -188,4 +188,4 @@ ob_start();
 
 <?php
 $adminContent = ob_get_clean();
-include TEMPLATE_DIR . '/admin/layout.php';
+include TEMPLATE_DIR . '/artistspace/layout.php';

@@ -8,7 +8,7 @@ function isAdmin(): bool
 function requireAdmin(): void
 {
     if (!isAdmin()) {
-        header('Location: ' . SITE_URL . '/admin/login');
+        header('Location: ' . SITE_URL . '/artistspace/login');
         exit;
     }
 }

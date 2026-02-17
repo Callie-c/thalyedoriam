@@ -20,7 +20,7 @@
             <?php if (!empty($loginError)): ?>
                 <p class="login-error">Mot de passe incorrect.</p>
             <?php endif; ?>
-            <form method="POST" action="/admin/login">
+            <form method="POST" action="/artistspace/login">
                 <div class="form-group">
                     <label for="password">Mot de passe</label>
                     <input type="password" id="password" name="password" required autofocus>

@@ -20,14 +20,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && verifyCsrf()) {
     if ($newPassword) {
         if (strlen($newPassword) < 6) {
             flashMessage('error', 'Le mot de passe doit faire au moins 6 caractères.');
-            header('Location: ' . SITE_URL . '/admin/settings');
+            header('Location: ' . SITE_URL . '/artistspace/settings');
             exit;
         }
         setSetting('admin_password', password_hash($newPassword, PASSWORD_DEFAULT));
     }
 
     flashMessage('success', 'Réglages enregistrés.');
-    header('Location: ' . SITE_URL . '/admin/settings');
+    header('Location: ' . SITE_URL . '/artistspace/settings');
     exit;
 }
 
@@ -114,4 +114,4 @@ ob_start();
 
 <?php
 $adminContent = ob_get_clean();
-include TEMPLATE_DIR . '/admin/layout.php';
+include TEMPLATE_DIR . '/artistspace/layout.php';

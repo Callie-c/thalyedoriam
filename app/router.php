@@ -9,7 +9,7 @@ function route(string $uri): void
     $settings = getAllSettings();
 
     // Routes admin
-    if (str_starts_with($uri, '/admin')) {
+    if (str_starts_with($uri, '/artistspace')) {
         routeAdmin($uri, $settings);
         return;
     }
@@ -51,28 +51,28 @@ function route(string $uri): void
 function routeAdmin(string $uri, array $settings): void
 {
     $adminRoutes = [
-        '/admin' => 'dashboard',
-        '/admin/login' => 'login',
-        '/admin/logout' => 'logout',
-        '/admin/oeuvres' => 'oeuvres',
-        '/admin/expositions' => 'expositions',
-        '/admin/boutique' => 'boutique',
-        '/admin/pages' => 'pages',
-        '/admin/settings' => 'settings',
+        '/artistspace' => 'dashboard',
+        '/artistspace/login' => 'login',
+        '/artistspace/logout' => 'logout',
+        '/artistspace/oeuvres' => 'oeuvres',
+        '/artistspace/expositions' => 'expositions',
+        '/artistspace/boutique' => 'boutique',
+        '/artistspace/pages' => 'pages',
+        '/artistspace/settings' => 'settings',
     ];
 
     // Logout
-    if ($uri === '/admin/logout') {
+    if ($uri === '/artistspace/logout') {
         logoutAdmin();
-        header('Location: ' . SITE_URL . '/admin/login');
+        header('Location: ' . SITE_URL . '/artistspace/login');
         exit;
     }
 
     // Login
-    if ($uri === '/admin/login') {
+    if ($uri === '/artistspace/login') {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (loginAdmin($_POST['password'] ?? '')) {
-                header('Location: ' . SITE_URL . '/admin');
+                header('Location: ' . SITE_URL . '/artistspace');
                 exit;
             }
             $loginError = true;
@@ -85,7 +85,7 @@ function routeAdmin(string $uri, array $settings): void
     requireAdmin();
 
     // Routes CRUD avec ID (edit/delete)
-    if (preg_match('#^/admin/(oeuvres|expositions|boutique)/(\d+)/(edit|delete)$#', $uri, $m)) {
+    if (preg_match('#^/artistspace/(oeuvres|expositions|boutique)/(\d+)/(edit|delete)$#', $uri, $m)) {
         $section = $m[1];
         $id = (int)$m[2];
         $action = $m[3];
@@ -94,7 +94,7 @@ function routeAdmin(string $uri, array $settings): void
     }
 
     // Route ajout
-    if (preg_match('#^/admin/(oeuvres|expositions|boutique)/new$#', $uri, $m)) {
+    if (preg_match('#^/artistspace/(oeuvres|expositions|boutique)/new$#', $uri, $m)) {
         $section = $m[1];
         $action = 'new';
         $id = null;

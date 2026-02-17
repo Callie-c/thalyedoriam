@@ -14,13 +14,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && verifyCsrf()) {
             setSetting('bio_photo', $photoPath);
         } catch (RuntimeException $e) {
             flashMessage('error', $e->getMessage());
-            header('Location: ' . SITE_URL . '/admin/pages');
+            header('Location: ' . SITE_URL . '/artistspace/pages');
             exit;
         }
     }
 
     flashMessage('success', 'Contenus enregistrés.');
-    header('Location: ' . SITE_URL . '/admin/pages');
+    header('Location: ' . SITE_URL . '/artistspace/pages');
     exit;
 }
 
@@ -60,4 +60,4 @@ ob_start();
 
 <?php
 $adminContent = ob_get_clean();
-include TEMPLATE_DIR . '/admin/layout.php';
+include TEMPLATE_DIR . '/artistspace/layout.php';

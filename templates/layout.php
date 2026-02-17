@@ -60,7 +60,7 @@
             <div class="footer-links">
                 <a href="/mentions-legales">Mentions légales</a>
                 <?php if (isAdmin()): ?>
-                    <a href="/admin">Administration</a>
+                    <a href="/artistspace">Administration</a>
                 <?php endif; ?>
             </div>
             <p class="footer-copy">&copy; <?= date('Y') ?> <?= e($settings['site_title'] ?? "Thalye d'Oriam") ?>. Tous droits réservés.</p>

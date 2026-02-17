@@ -13,7 +13,7 @@ if ($action === 'delete' && $id) {
         $db->prepare('DELETE FROM oeuvres WHERE id = :id')->execute(['id' => $id]);
         flashMessage('success', 'Œuvre supprimée.');
     }
-    header('Location: ' . SITE_URL . '/admin/oeuvres');
+    header('Location: ' . SITE_URL . '/artistspace/oeuvres');
     exit;
 }
 
@@ -26,7 +26,7 @@ if ($action === 'edit' || $action === 'new') {
         $oeuvre = $stmt->fetch();
         if (!$oeuvre) {
             flashMessage('error', 'Œuvre introuvable.');
-            header('Location: ' . SITE_URL . '/admin/oeuvres');
+            header('Location: ' . SITE_URL . '/artistspace/oeuvres');
             exit;
         }
     }
@@ -75,7 +75,7 @@ if ($action === 'edit' || $action === 'new') {
                     ]);
                     flashMessage('success', 'Œuvre ajoutée.');
                 }
-                header('Location: ' . SITE_URL . '/admin/oeuvres');
+                header('Location: ' . SITE_URL . '/artistspace/oeuvres');
                 exit;
             }
         }
@@ -137,12 +137,12 @@ if ($action === 'edit' || $action === 'new') {
         </div>
         <div class="form-actions">
             <button type="submit" class="btn btn-primary"><?= $oeuvre ? 'Enregistrer' : 'Ajouter' ?></button>
-            <a href="/admin/oeuvres" class="btn">Annuler</a>
+            <a href="/artistspace/oeuvres" class="btn">Annuler</a>
         </div>
     </form>
     <?php
     $adminContent = ob_get_clean();
-    include TEMPLATE_DIR . '/admin/layout.php';
+    include TEMPLATE_DIR . '/artistspace/layout.php';
     return;
 }
 
@@ -154,7 +154,7 @@ ob_start();
 
 <div class="admin-actions">
     <h1 class="admin-title" style="margin-bottom:0">Œuvres</h1>
-    <a href="/admin/oeuvres/new" class="btn btn-primary btn-sm">+ Ajouter</a>
+    <a href="/artistspace/oeuvres/new" class="btn btn-primary btn-sm">+ Ajouter</a>
 </div>
 
 <?php if (empty($oeuvres)): ?>
@@ -180,8 +180,8 @@ ob_start();
                     <td><?= $o['annee'] ?: '—' ?></td>
                     <td><?= $o['visible'] ? '✓' : '✗' ?></td>
                     <td class="actions">
-                        <a href="/admin/oeuvres/<?= $o['id'] ?>/edit" class="btn btn-sm">Modifier</a>
-                        <form method="POST" action="/admin/oeuvres/<?= $o['id'] ?>/delete" style="display:inline" onsubmit="return confirm('Supprimer cette œuvre ?')">
+                        <a href="/artistspace/oeuvres/<?= $o['id'] ?>/edit" class="btn btn-sm">Modifier</a>
+                        <form method="POST" action="/artistspace/oeuvres/<?= $o['id'] ?>/delete" style="display:inline" onsubmit="return confirm('Supprimer cette œuvre ?')">
                             <?= csrfField() ?>
                             <button type="submit" class="btn btn-sm btn-danger">Supprimer</button>
                         </form>
@@ -194,4 +194,4 @@ ob_start();
 
 <?php
 $adminContent = ob_get_clean();
-include TEMPLATE_DIR . '/admin/layout.php';
+include TEMPLATE_DIR . '/artistspace/layout.php';
