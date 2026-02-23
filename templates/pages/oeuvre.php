@@ -19,9 +19,6 @@ if (!$oeuvre) {
             </div>
             <div>
                 <h1 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1rem;"><?= e($oeuvre['titre']) ?></h1>
-                <?php if ($oeuvre['technique']): ?>
-                    <p><strong>Technique :</strong> <?= e($oeuvre['technique']) ?></p>
-                <?php endif; ?>
                 <?php if ($oeuvre['dimensions']): ?>
                     <p><strong>Dimensions :</strong> <?= e($oeuvre['dimensions']) ?></p>
                 <?php endif; ?>
@@ -29,7 +26,7 @@ if (!$oeuvre) {
                     <p><strong>Année :</strong> <?= $oeuvre['annee'] ?></p>
                 <?php endif; ?>
                 <?php if ($oeuvre['description']): ?>
-                    <div style="margin-top: 1.5rem; line-height: 1.9;">
+                    <div style="margin-top: 1.5rem; font-size: 1.15rem; line-height: 1.9;">
                         <?= nl2br(e($oeuvre['description'])) ?>
                     </div>
                 <?php endif; ?>
