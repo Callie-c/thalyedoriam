@@ -9,9 +9,28 @@ if (!$oeuvre) {
     echo '<section class="section" style="padding-top: calc(var(--header-height) + 3rem); text-align: center;"><p>Œuvre introuvable.</p></section>';
     return;
 }
+
+// Récupérer l'oeuvre précédente et suivante
+$allOeuvres = $db->query('SELECT id FROM oeuvres WHERE visible = 1 ORDER BY ordre ASC, created_at DESC')->fetchAll();
+$prevId = null;
+$nextId = null;
+foreach ($allOeuvres as $i => $o) {
+    if ((int)$o['id'] === (int)$oeuvre_id) {
+        if ($i > 0) $prevId = $allOeuvres[$i - 1]['id'];
+        if ($i < count($allOeuvres) - 1) $nextId = $allOeuvres[$i + 1]['id'];
+        break;
+    }
+}
 ?>
 
-<section class="section" style="padding-top: calc(var(--header-height) + 3rem);">
+<section class="section" style="padding-top: calc(var(--header-height) + 3rem); position: relative;">
+    <?php if ($prevId): ?>
+        <a href="/galerie/<?= $prevId ?>" class="oeuvre-nav oeuvre-nav-prev" title="Œuvre précédente">&#10094;</a>
+    <?php endif; ?>
+    <?php if ($nextId): ?>
+        <a href="/galerie/<?= $nextId ?>" class="oeuvre-nav oeuvre-nav-next" title="Œuvre suivante">&#10095;</a>
+    <?php endif; ?>
+
     <div class="section-inner">
         <div class="bio-layout">
             <div>
