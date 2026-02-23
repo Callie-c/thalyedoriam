@@ -9,7 +9,7 @@
     <title>Admin — <?= e(getSetting('site_title', "Thalye d'Oriam")) ?></title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?= SITE_URL ?>/css/style.css?v=<?= filemtime(PUBLIC_ROOT . '/css/style.css') ?>">
 </head>
 <body class="admin-body">
