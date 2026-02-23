@@ -31,16 +31,13 @@ sort($techniques);
         <?php else: ?>
             <div class="gallery-grid" id="gallery-grid">
                 <?php foreach ($oeuvres as $oeuvre): ?>
-                    <div class="gallery-item" data-lightbox data-technique="<?= e($oeuvre['technique']) ?>"
-                         data-src="<?= imageUrl($oeuvre['image']) ?>"
-                         data-title="<?= e($oeuvre['titre']) ?>"
-                         data-info="<?= e($oeuvre['technique']) ?><?= $oeuvre['dimensions'] ? ' — ' . e($oeuvre['dimensions']) : '' ?><?= $oeuvre['annee'] ? ' (' . $oeuvre['annee'] . ')' : '' ?>">
+                    <a href="/galerie/<?= $oeuvre['id'] ?>" class="gallery-item" data-technique="<?= e($oeuvre['technique']) ?>" style="text-decoration: none;">
                         <img src="<?= imageUrl($oeuvre['image']) ?>" alt="<?= e($oeuvre['titre']) ?>" loading="lazy">
                         <div class="gallery-overlay">
                             <h3><?= e($oeuvre['titre']) ?></h3>
                             <p><?= e($oeuvre['technique']) ?><?= $oeuvre['annee'] ? ' — ' . $oeuvre['annee'] : '' ?></p>
                         </div>
-                    </div>
+                    </a>
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
