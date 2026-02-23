@@ -503,7 +503,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     letter-spacing: 0.05em;
     text-transform: uppercase;
     margin-bottom: 0.5rem;
-    color: var(--color-text-light);
+    color: var(--color-text);
 }
 .form-group input,
 .form-group textarea,
@@ -511,12 +511,22 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     width: 100%;
     padding: 0.8rem 1rem;
     border: 1px solid var(--color-border);
-    background: var(--color-white);
+    background: var(--color-bg);
     font-family: var(--font-body);
     font-size: 1rem;
-    color: var(--color-text);
+    color: #1A1A1A;
     border-radius: 2px;
     transition: border-color var(--transition);
+}
+[data-theme="dark"] .form-group input,
+[data-theme="dark"] .form-group textarea,
+[data-theme="dark"] .form-group select {
+    background: #1E1C1A;
+    color: #FFFFFF;
+}
+[data-theme="dark"] .form-group input::placeholder,
+[data-theme="dark"] .form-group textarea::placeholder {
+    color: #777;
 }
 .form-group input:focus,
 .form-group textarea:focus,
