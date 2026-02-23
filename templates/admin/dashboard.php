@@ -43,4 +43,4 @@ ob_start();
 
 <?php
 $adminContent = ob_get_clean();
-include TEMPLATE_DIR . '/artistspace/layout.php';
+include TEMPLATE_DIR . '/admin/layout.php';

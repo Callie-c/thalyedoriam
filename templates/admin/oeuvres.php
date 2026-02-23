@@ -142,7 +142,7 @@ if ($action === 'edit' || $action === 'new') {
     </form>
     <?php
     $adminContent = ob_get_clean();
-    include TEMPLATE_DIR . '/artistspace/layout.php';
+    include TEMPLATE_DIR . '/admin/layout.php';
     return;
 }
 
@@ -194,4 +194,4 @@ ob_start();
 
 <?php
 $adminContent = ob_get_clean();
-include TEMPLATE_DIR . '/artistspace/layout.php';
+include TEMPLATE_DIR . '/admin/layout.php';
